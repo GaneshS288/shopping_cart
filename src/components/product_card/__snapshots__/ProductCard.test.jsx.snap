@@ -1,0 +1,23 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Product Card > matches snapshot 1`] = `
+<div>
+  <div>
+    <div>
+      <img
+        alt="Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops"
+        src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
+      />
+    </div>
+    <h4>
+      Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops
+    </h4>
+    <button>
+      Add to Cart
+    </button>
+    <button>
+      View Details
+    </button>
+  </div>
+</div>
+`;
