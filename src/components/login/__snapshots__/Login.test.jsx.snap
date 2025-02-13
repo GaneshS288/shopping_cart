@@ -1,0 +1,33 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Login > matches snapshot 1`] = `
+<div>
+  <div>
+    <form
+      action=""
+    >
+      <label
+        for="username"
+      >
+        Username :
+        <input
+          id="username"
+          name="username"
+          required=""
+          type="text"
+        />
+      </label>
+      <button
+        type="submit"
+      >
+        Log in as User
+      </button>
+    </form>
+    <button
+      type="button"
+    >
+      Log in as Guest
+    </button>
+  </div>
+</div>
+`;
