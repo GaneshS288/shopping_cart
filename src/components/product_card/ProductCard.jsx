@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { NavLink } from "react-router-dom";
 
 function ProductCard({ productData}) {
     return (
@@ -9,7 +10,9 @@ function ProductCard({ productData}) {
 
             <h4>{productData.title}</h4>
             <button>Add to Cart</button>
-            <button>View Details</button>
+            <button>
+                <NavLink to={`/home/products/${productData.id}`}>View Details</NavLink>
+            </button>
         </div>
     );
 }

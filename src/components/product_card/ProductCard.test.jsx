@@ -1,6 +1,8 @@
 import { describe, it, expect } from "vitest";
 import { render, screen, act } from "@testing-library/react";
 import { ProductCard } from "./ProductCard.jsx";
+import { createMemoryRouter, RouterProvider } from "react-router-dom";
+
 
 const dummyProductData = {
   category: "men's clothing",
@@ -13,15 +15,35 @@ const dummyProductData = {
   title: "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
 };
 
+function testSetup() {
+  const routes = [
+    {
+      path : "/home/products",
+      element: <ProductCard productData={dummyProductData}></ProductCard>,
+    },
+  ];
+
+  const router = createMemoryRouter(routes, {
+    initialEntries: ["/", "/home/products"],
+    initialIndex: 1,
+  });
+
+  return { router }
+}
+
 describe("Product Card", () => {
   it("matches snapshot", () => {
-    const {container} = render(<ProductCard productData={dummyProductData}></ProductCard>);
+    const { router } = testSetup();
+    const {container} = render(<RouterProvider router={router}></RouterProvider>);
     
     expect(container).toMatchSnapshot();
   })
 
   it("renders the card", () => {
-    render(<ProductCard productData={dummyProductData}></ProductCard>);
+    const { router } = testSetup();
+    render(<RouterProvider router={router}></RouterProvider>);
+    screen.debug()
+   
 
     const productImg = screen.getByRole("img");
     const productTitle = screen.getByRole("heading");

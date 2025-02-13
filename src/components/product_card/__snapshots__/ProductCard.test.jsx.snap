@@ -16,7 +16,13 @@ exports[`Product Card > matches snapshot 1`] = `
       Add to Cart
     </button>
     <button>
-      View Details
+      <a
+        class=""
+        data-discover="true"
+        href="/home/products/1"
+      >
+        View Details
+      </a>
     </button>
   </div>
 </div>
