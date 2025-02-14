@@ -29,7 +29,7 @@ function Login() {
         <button type="submit">Log in as User</button>
       </form>
 
-      <button type="button">Log in as Guest</button>
+      <button type="button" onClick={() => handleSubmit("Guest")} >Log in as Guest</button>
     </div>
   );
 }

@@ -67,8 +67,17 @@ describe("Login", () => {
     await user.type(userNameInput, "Ganesh");
     await user.click(loginAsUserButton);
 
-    console.log(handleSubmit.mock.calls)
-
     expect(handleSubmit).toHaveBeenCalledWith("Ganesh")    
   });
+
+  it("calls the submit handler with Guest", async () => {
+    const { router, user, handleSubmit } = testSetup();
+    render(<RouterProvider router={router}></RouterProvider>);
+
+    const loginAsGuestButton = screen.getAllByRole("button")[1];
+
+    await user.click(loginAsGuestButton);
+
+    expect(handleSubmit).toHaveBeenCalledWith("Guest");
+  })
 });
