@@ -3,7 +3,7 @@ import { useOutletContext } from "react-router-dom";
 import styles from "./Login.module.css"
 
 function Login() {
-  const [handleSubmit] = useOutletContext();
+  const {handleSubmit} = useOutletContext();
   const [username, setUsername] = useState("");
 
   return (

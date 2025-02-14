@@ -1,0 +1,46 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Home header > matches snapshot 1`] = `
+<div>
+  <div>
+    <a
+      aria-current="page"
+      class="active"
+      data-discover="true"
+      href="/home"
+    >
+      BlazingCart
+    </a>
+    <div>
+      <button>
+        <a
+          class=""
+          data-discover="true"
+          href="/home/cart"
+        >
+          <div>
+            <img
+              alt="cart-icon"
+              src=""
+            />
+            <span
+              data-testid="cartItemCount"
+            >
+              2
+            </span>
+          </div>
+        </a>
+      </button>
+      <div>
+        <img
+          alt="user avatar"
+          src=""
+        />
+        <p>
+          Ganesh
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;

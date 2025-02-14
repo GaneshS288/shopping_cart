@@ -10,7 +10,7 @@ function testSetup() {
   const routes = [
     {
       path: "/",
-      element: <Outlet context={[handleSubmit]}></Outlet>,
+      element: <Outlet context={{handleSubmit}}></Outlet>,
       children: [
         {
           path: "/login",

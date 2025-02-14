@@ -20,7 +20,7 @@ function App() {
       navigate("/home")
   }, [isLoggedIn, navigate])
 
-  return <Outlet context={[handleSubmit]}></Outlet>;
+  return <Outlet context={{handleSubmit, username}}></Outlet>;
 }
 
 export default App;
