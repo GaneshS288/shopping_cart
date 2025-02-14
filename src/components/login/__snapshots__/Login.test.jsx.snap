@@ -15,6 +15,7 @@ exports[`Login > matches snapshot 1`] = `
           name="username"
           required=""
           type="text"
+          value=""
         />
       </label>
       <button

@@ -1,18 +1,37 @@
+import { useState } from "react";
+import { useOutletContext } from "react-router-dom";
+
 function Login() {
-    return(
-        <div>
-            <form action="">
-                <label htmlFor="username">
-                    Username :
-                    <input type="text" id="username" name="username" required/>
-                </label>
+  const [handleSubmit] = useOutletContext();
+  const [username, setUsername] = useState("");
 
-                <button type="submit">Log in as User</button>
-            </form>
+  return (
+    <div>
+      <form
+        action=""
+        onSubmit={(event) => {
+          event.preventDefault();
+          handleSubmit(username);
+        }}
+      >
+        <label htmlFor="username">
+          Username :
+          <input
+            type="text"
+            id="username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            name="username"
+            required
+          />
+        </label>
 
-            <button type="button">Log in as Guest</button>
-        </div>
-    );
+        <button type="submit">Log in as User</button>
+      </form>
+
+      <button type="button">Log in as Guest</button>
+    </div>
+  );
 }
 
 export default Login;

@@ -1,14 +1,24 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import Login from "./Login.jsx";
-import { createMemoryRouter, RouterProvider } from "react-router-dom";
+import { createMemoryRouter, Outlet, RouterProvider } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
 
+
+
 function testSetup() {
+  const handleSubmit = vi.fn();
+
   const routes = [
     {
-      path: "/login",
-      element: <Login></Login>,
+      path: "/",
+      element: <Outlet context={[handleSubmit]}></Outlet>,
+      children: [
+        {
+          path: "/login",
+          element: <Login></Login>,
+        },
+      ],
     },
   ];
 
@@ -19,7 +29,7 @@ function testSetup() {
 
   const user = userEvent.setup();
 
-  return { router, user };
+  return { router, user, handleSubmit };
 }
 
 describe("Login", () => {
@@ -29,7 +39,7 @@ describe("Login", () => {
       <RouterProvider router={router}></RouterProvider>
     );
 
-    screen.debug()
+    screen.debug();
 
     expect(container).toMatchSnapshot();
   });
@@ -39,10 +49,26 @@ describe("Login", () => {
     render(<RouterProvider router={router}></RouterProvider>);
 
     const userNameInput = screen.getByLabelText("Username :");
-    const [loginAsUserButton, loginAGuestButton] = screen.getAllByRole("button");
+    const [loginAsUserButton, loginAGuestButton] =
+      screen.getAllByRole("button");
 
     expect(userNameInput).toBeInTheDocument();
     expect(loginAsUserButton.textContent).toMatch("Log in as User");
     expect(loginAGuestButton.textContent).toMatch("Log in as Guest");
+  });
+
+  it("calls the submit handler with inputted username", async () => {
+    const { router, user, handleSubmit } = testSetup();
+    render(<RouterProvider router={router}></RouterProvider>);
+
+    const userNameInput = screen.getByLabelText("Username :");
+    const [loginAsUserButton] = screen.getAllByRole("button");
+
+    await user.type(userNameInput, "Ganesh");
+    await user.click(loginAsUserButton);
+
+    console.log(handleSubmit.mock.calls)
+
+    expect(handleSubmit).toHaveBeenCalledWith("Ganesh")    
   });
 });
