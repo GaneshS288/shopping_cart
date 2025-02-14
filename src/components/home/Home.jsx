@@ -1,13 +1,22 @@
-import { useOutletContext } from "react-router-dom";
+import { useOutletContext, useParams } from "react-router-dom";
 import HomeHeader from "./home_header/HomeHeader";
+import HomeNav from "./home_nav/HomeNav";
 
 function Home() {
-    const { username } = useOutletContext()
-    return(
-        <div>
-            <HomeHeader userName={username} cartItemCount={2}></HomeHeader>
-        </div>
-    )
+  const { username } = useOutletContext();
+  const {category} = useParams();
+
+  console.log(category)
+  return (
+    <>
+      <header>
+        <HomeHeader userName={username} cartItemCount={2}></HomeHeader>
+      </header>
+      <section>
+        <HomeNav></HomeNav>
+      </section>
+    </>
+  );
 }
 
 export default Home;
