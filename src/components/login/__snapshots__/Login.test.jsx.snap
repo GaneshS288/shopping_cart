@@ -2,33 +2,44 @@
 
 exports[`Login > matches snapshot 1`] = `
 <div>
-  <div>
-    <form
-      action=""
+  <div
+    class="_login-container_863bc8"
+  >
+    <h1
+      class="_title_863bc8"
     >
-      <label
-        for="username"
+      BlazingCart
+    </h1>
+    <div>
+      <form
+        action=""
+        class="_login__form_863bc8"
       >
-        Username :
-        <input
-          id="username"
-          name="username"
-          required=""
-          type="text"
-          value=""
-        />
-      </label>
+        <label
+          class="_form__label_863bc8"
+          for="username"
+        >
+          Username :
+          <input
+            id="username"
+            name="username"
+            required=""
+            type="text"
+            value=""
+          />
+        </label>
+        <button
+          type="submit"
+        >
+          Log in as User
+        </button>
+      </form>
       <button
-        type="submit"
+        type="button"
       >
-        Log in as User
+        Log in as Guest
       </button>
-    </form>
-    <button
-      type="button"
-    >
-      Log in as Guest
-    </button>
+    </div>
   </div>
 </div>
 `;
