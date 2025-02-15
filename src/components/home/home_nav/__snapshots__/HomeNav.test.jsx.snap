@@ -7,6 +7,7 @@ exports[`Home Nav > matches snapshot 1`] = `
   </h2>
   <nav>
     <a
+      aria-current="page"
       class=""
       data-discover="true"
       href="/home/products"

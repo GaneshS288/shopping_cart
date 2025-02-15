@@ -15,7 +15,7 @@ function testSetup() {
   ];
 
   const router = createMemoryRouter(routes, {
-    initialEntries: ["/", "/home/All"],
+    initialEntries: ["/", "/home/products"],
     initialIndex: 1,
   });
 
