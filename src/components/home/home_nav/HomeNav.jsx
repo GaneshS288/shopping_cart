@@ -1,33 +1,50 @@
 import { NavLink } from "react-router-dom";
 
 function HomeNav() {
-    return(
-        <>
-        <h2>Categories</h2>
-        <nav>
-            <button>
-                <NavLink to={"/home/products"}>All</NavLink>
+  const categories = [
+    {
+      id: 0,
+      linkPostfix: "products",
+      content: "All",
+    },
 
-            </button>
+    {
+      id: 1,
+      linkPostfix: "electronics",
+      content: "Electronics",
+    },
 
-            <button>
-                <NavLink to={"/home/electronics"}>Electronics</NavLink>
-            </button>
+    {
+      id: 2,
+      linkPostfix: "jewelery",
+      content: "Jewelery",
+    },
+    {
+      id: 3,
+      linkPostfix: "men's clothing",
+      content: "Men's clothing",
+    },
 
-            <button>
-                <NavLink to={"/home/jewelery"}>Jewelery</NavLink>
-            </button>
-
-            <button>
-                <NavLink to={"/home/men's clothing"}>Men&apos;s clothing</NavLink>
-            </button>
-
-            <button>
-                <NavLink to={"/home/women's clothing"}>women&apos;s clothing</NavLink>
-            </button>
-        </nav>
-        </>
-    );
+    {
+      id: 4,
+      linkPostfix: "women's clothing",
+      content: "Women's clothing",
+    },
+  ];
+  return (
+    <>
+      <h2>Categories</h2>
+      <nav>
+        {categories.map((category) => {
+          return (
+            <NavLink key={category.id} to={`/home/${category.linkPostfix}`}>
+              {category.content}
+            </NavLink>
+          );
+        })}
+      </nav>
+    </>
+  );
 }
 
 export default HomeNav;

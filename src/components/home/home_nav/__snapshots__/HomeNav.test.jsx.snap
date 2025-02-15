@@ -6,51 +6,41 @@ exports[`Home Nav > matches snapshot 1`] = `
     Categories
   </h2>
   <nav>
-    <button>
-      <a
-        class=""
-        data-discover="true"
-        href="/home/products"
-      >
-        All
-      </a>
-    </button>
-    <button>
-      <a
-        class=""
-        data-discover="true"
-        href="/home/electronics"
-      >
-        Electronics
-      </a>
-    </button>
-    <button>
-      <a
-        class=""
-        data-discover="true"
-        href="/home/jewelery"
-      >
-        Jewelery
-      </a>
-    </button>
-    <button>
-      <a
-        class=""
-        data-discover="true"
-        href="/home/men's clothing"
-      >
-        Men's clothing
-      </a>
-    </button>
-    <button>
-      <a
-        class=""
-        data-discover="true"
-        href="/home/women's clothing"
-      >
-        women's clothing
-      </a>
-    </button>
+    <a
+      class=""
+      data-discover="true"
+      href="/home/products"
+    >
+      All
+    </a>
+    <a
+      class=""
+      data-discover="true"
+      href="/home/electronics"
+    >
+      Electronics
+    </a>
+    <a
+      class=""
+      data-discover="true"
+      href="/home/jewelery"
+    >
+      Jewelery
+    </a>
+    <a
+      class=""
+      data-discover="true"
+      href="/home/men's clothing"
+    >
+      Men's clothing
+    </a>
+    <a
+      class=""
+      data-discover="true"
+      href="/home/women's clothing"
+    >
+      Women's clothing
+    </a>
   </nav>
 </div>
 `;
