@@ -1,6 +1,7 @@
+import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 
-function HomeNav() {
+function HomeNav({ handleClick, selectedCategory }) {
   const categories = [
     {
       id: 0,
@@ -37,7 +38,12 @@ function HomeNav() {
       <nav>
         {categories.map((category) => {
           return (
-            <NavLink key={category.id} to={`/home/${category.linkPostfix}`}>
+            <NavLink
+              key={category.id}
+              to={`/home/${category.linkPostfix}`}
+              onClick={() => handleClick(category.linkPostfix)}
+              className={() => selectedCategory === category.linkPostfix ? "selected" : ""}
+            >
               {category.content}
             </NavLink>
           );
@@ -46,5 +52,10 @@ function HomeNav() {
     </>
   );
 }
+
+HomeNav.propTypes = {
+  handleClick: PropTypes.func.isRequired,
+  selectedCategory: PropTypes.string.isRequired,
+};
 
 export default HomeNav;

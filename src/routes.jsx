@@ -1,4 +1,3 @@
-import { element } from "prop-types";
 import App from "./App";
 import Home from "./components/home/Home";
 import Login from "./components/login/Login";

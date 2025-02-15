@@ -5,21 +5,23 @@ import userEvent from "@testing-library/user-event";
 import HomeNav from "./HomeNav";
 
 function testSetup() {
+  const handleClick = vi.fn();
+
   const routes = [
     {
-      path: "/home",
-      element: <HomeNav></HomeNav>,
+      path: "/home/:category",
+      element: <HomeNav handleClick={handleClick} selectedCategory={"jewelery"}></HomeNav>,
     },
   ];
 
   const router = createMemoryRouter(routes, {
-    initialEntries: ["/", "/home"],
+    initialEntries: ["/", "/home/All"],
     initialIndex: 1,
   });
 
   const user = userEvent.setup();
 
-  return { router, user };
+  return { router, user, handleClick };
 }
 
 describe("Home Nav", () => {
@@ -36,5 +38,24 @@ describe("Home Nav", () => {
     render(<RouterProvider router={router}></RouterProvider>);
 
     expect(screen.getAllByRole("link").length).toBe(5);
+  });
+
+  it("invokes handleClick by passing clicked category", async () => {
+    const { router, user, handleClick } = testSetup();
+    render(<RouterProvider router={router}></RouterProvider>);
+
+    const jeweleryLink = screen.getByText("Jewelery");
+    await user.click(jeweleryLink);
+
+    expect(handleClick).toHaveBeenCalledWith("jewelery");
+  });
+
+  it("applies selected class to the category that's selected", async () => {
+    const { router, } = testSetup();
+    render(<RouterProvider router={router}></RouterProvider>);
+
+    const jeweleryLink = screen.getByText("Jewelery");
+
+    expect(jeweleryLink.className).toMatch("selected")
   });
 });

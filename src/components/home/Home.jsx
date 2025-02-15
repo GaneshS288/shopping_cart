@@ -4,7 +4,7 @@ import HomeNav from "./home_nav/HomeNav";
 
 function Home() {
   const { username } = useOutletContext();
-  const {category} = useParams();
+  const { category } = useParams();
 
   console.log(category)
   return (
@@ -13,7 +13,7 @@ function Home() {
         <HomeHeader userName={username} cartItemCount={2}></HomeHeader>
       </header>
       <section>
-        <HomeNav></HomeNav>
+        <HomeNav handleClick={(h)=> h} selectedCategory={category}></HomeNav>
       </section>
     </>
   );

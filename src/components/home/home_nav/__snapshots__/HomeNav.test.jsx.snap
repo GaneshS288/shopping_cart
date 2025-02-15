@@ -21,7 +21,7 @@ exports[`Home Nav > matches snapshot 1`] = `
       Electronics
     </a>
     <a
-      class=""
+      class="selected"
       data-discover="true"
       href="/home/jewelery"
     >
