@@ -14,15 +14,9 @@ const routes = [
       },
 
       {
-        path: "/home",
+        path: "/home/:category",
         element: <Home></Home>,
-        children: [
-          {
-            path: "/home/:category",
-            element: <Home></Home>,
-          }
-        ]
-      }
+      },
     ],
   },
 ];

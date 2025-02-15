@@ -17,7 +17,7 @@ function App() {
     if(!isLoggedIn)
       navigate("/login")
     else if (isLoggedIn)
-      navigate("/home")
+      navigate("/home/products")
   }, [isLoggedIn, navigate])
 
   return <Outlet context={{handleSubmit, username}}></Outlet>;
