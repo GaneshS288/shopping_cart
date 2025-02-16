@@ -28,6 +28,18 @@ const dummyProductData = [
   },
 ];
 
+const anotherDummyProductData = [
+  {
+    category: "electronics",
+    description: "this is dummy for mocking purpose",
+    id: 9,
+    image: "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg",
+    price: 64,
+    rating: { rate: 3.3, count: 203 },
+    title: "dummy title for mocking purposes",
+  },
+];
+
 vi.mock("../../lib/fetchCategory", () => {
   return {
     fetchAllProducts: vi.fn(),
@@ -36,7 +48,7 @@ vi.mock("../../lib/fetchCategory", () => {
 });
 
 fetchAllProducts.mockResolvedValue(dummyProductData);
-fetchCategory.mockResolvedValue(dummyProductData);
+fetchCategory.mockResolvedValue(anotherDummyProductData);
 
 function testSetup() {
   const routes = [
@@ -80,6 +92,36 @@ describe("Home page", () => {
         )
       ).toBeInTheDocument();
     });
+    screen.debug();
+  });
+
+  it("renders different category when link is clicked", async () => {
+    const { router, user } = testSetup();
+
+    render(<RouterProvider router={router}></RouterProvider>);
+
+    const jeweleryLink = screen.getByText("Jewelery");
+
+    await waitFor(() => {
+      expect(
+        screen.getByText(
+          "WD 2TB Elements Portable External Hard Drive - USB 3.0"
+        )
+      ).toBeInTheDocument();
+      expect(
+        screen.getByText(
+          "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops"
+        )
+      ).toBeInTheDocument();
+    });
+    await user.click(jeweleryLink);
+
+    await waitFor(() => {
+      expect(
+        screen.getByText("dummy title for mocking purposes")
+      ).toBeInTheDocument();
+    });
+
     screen.debug();
   });
 });
