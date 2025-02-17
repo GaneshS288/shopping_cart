@@ -49,7 +49,7 @@ function Home() {
       </section>
       <main>
         {isLoading ||
-          categoriesData[category].map((data) => (
+          categoriesData[category]?.map((data) => (
             <ProductCard key={data.id} productData={data}></ProductCard>
           ))}
       </main>
