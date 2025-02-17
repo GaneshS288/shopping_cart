@@ -2,41 +2,45 @@
 
 exports[`Home Nav > matches snapshot 1`] = `
 <div>
-  <h2>
+  <h2
+    class="_categories-title_2bdc0c"
+  >
     Categories
   </h2>
-  <nav>
+  <nav
+    class="_category-nav_2bdc0c"
+  >
     <a
       aria-current="page"
-      class=""
+      class="_link_2bdc0c"
       data-discover="true"
       href="/home/products"
     >
       All
     </a>
     <a
-      class=""
+      class="_link_2bdc0c"
       data-discover="true"
       href="/home/electronics"
     >
       Electronics
     </a>
     <a
-      class="selected"
+      class="_selected-link_2bdc0c"
       data-discover="true"
       href="/home/jewelery"
     >
       Jewelery
     </a>
     <a
-      class=""
+      class="_link_2bdc0c"
       data-discover="true"
       href="/home/men's clothing"
     >
       Men's clothing
     </a>
     <a
-      class=""
+      class="_link_2bdc0c"
       data-discover="true"
       href="/home/women's clothing"
     >

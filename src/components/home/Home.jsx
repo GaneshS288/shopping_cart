@@ -3,8 +3,8 @@ import HomeHeader from "./home_header/HomeHeader";
 import HomeNav from "./home_nav/HomeNav";
 import { useEffect, useState } from "react";
 import { fetchAllProducts, fetchCategory } from "../../lib/fetchCategory";
-import { ProductCard } from "../product_card/ProductCard";
 import styles from "./Home.module.css"
+import Products from "./products/Products";
 
 function Home() {
   const { username } = useOutletContext();
@@ -48,10 +48,7 @@ function Home() {
         ></HomeNav>
       </section>
       <main>
-        {isLoading ||
-          categoriesData[category]?.map((data) => (
-            <ProductCard key={data.id} productData={data}></ProductCard>
-          ))}
+        {isLoading || <Products productsData={categoriesData[category]}></Products>}
       </main>
     </>
   );
