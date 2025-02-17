@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 import cartIcon from "../../../assets/shopping-cart.svg";
+import userAvatar from "../../../assets/avatar-icon.svg"
 import styles from "./HomeHeader.module.css"
 
 function HomeHeader({ userName, cartItemCount }) {
@@ -18,9 +19,9 @@ function HomeHeader({ userName, cartItemCount }) {
           </div>
         </NavLink>
 
-        <div>
-          <img src="" alt="user avatar" />
-          <p>{userName}</p>
+        <div className={styles["user-container"]}>
+          <img src={userAvatar} alt="user avatar" className={styles.userAvatar} />
+          <p className={styles.username}>{userName}</p>
         </div>
       </div>
     </div>

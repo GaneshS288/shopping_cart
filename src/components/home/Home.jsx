@@ -4,6 +4,7 @@ import HomeNav from "./home_nav/HomeNav";
 import { useEffect, useState } from "react";
 import { fetchAllProducts, fetchCategory } from "../../lib/fetchCategory";
 import { ProductCard } from "../product_card/ProductCard";
+import styles from "./Home.module.css"
 
 function Home() {
   const { username } = useOutletContext();
@@ -40,7 +41,7 @@ function Home() {
       <header>
         <HomeHeader userName={username} cartItemCount={2}></HomeHeader>
       </header>
-      <section>
+      <section className={styles["category-nav-container"]}>
         <HomeNav
           handleClick={populateCategoriesData}
           selectedCategory={category}

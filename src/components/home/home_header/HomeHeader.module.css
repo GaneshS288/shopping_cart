@@ -1,37 +1,76 @@
 .header-container {
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  box-shadow: 0px 2px 10px gray;
 }
 
 .header__title {
-    font-family: "Trade Winds", Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: 2rem;
-    font-weight: bold;
-    color: var(--red-600);
-    text-decoration: none;
-    text-shadow: 0 2px 2px grey;
+  font-family:
+    "Trade Winds", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--red-600);
+  text-decoration: none;
+  text-shadow: 0 2px 2px grey;
+}
+
+.header__title:hover {
+  animation: scaleUp 0.2s ease-in forwards;
 }
 
 .header-container__right {
-    display: flex;
-    gap: 2rem;
+  display: flex;
+  gap: 2rem;
 }
 
 .cartIcon-container {
-    position: relative;
+  position: relative;
 }
 
 .cartIcon {
+  width: 40px;
+  height: 40px;
+}
+
+.cartItemCount {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: var(--neutral-950);
+  width: 20px;
+  height: 20px;
+  border-radius: 50px;
+  color: var(--zinc-50);
+  display: grid;
+  place-items: center;
+}
+
+.user-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.userAvatar {
     width: 40px;
     height: 40px;
 }
 
-.cartItemCount {
-    position: absolute;
-    top: 0;
-    right: 0;
-    background-color: aqua;
-    padding: 2px;
-    border-radius: 50px;
+.username {
+    font-family: Inter, Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    color: var(--neutral-950);
+    max-width: 60px;
+}
+
+@keyframes scaleUp {
+  from {
+    transform: scale(1, 1);
+  }
+  to {
+    transform: scale(1.1, 1.1);
+  }
 }

@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
+import styles from "./HomeNav.module.css";
 
 function HomeNav({ handleClick, selectedCategory }) {
   const categories = [
@@ -34,15 +35,19 @@ function HomeNav({ handleClick, selectedCategory }) {
   ];
   return (
     <>
-      <h2>Categories</h2>
-      <nav>
+      <h2 className={styles["categories-title"]}>Categories</h2>
+      <nav className={styles["category-nav"]}>
         {categories.map((category) => {
           return (
             <NavLink
               key={category.id}
               to={`/home/${category.linkPostfix}`}
               onClick={() => handleClick(category.linkPostfix)}
-              className={() => selectedCategory === category.linkPostfix ? "selected" : ""}
+              className={() =>
+                selectedCategory === category.linkPostfix
+                  ? styles["selected-link"]
+                  : styles["link"]
+              }
             >
               {category.content}
             </NavLink>

@@ -1,0 +1,7 @@
+.category-nav-container {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    padding: 0rem 2rem;
+    background-color: #E4E4E7;
+}
