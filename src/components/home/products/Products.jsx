@@ -1,9 +1,10 @@
 import { ProductCard } from "../../product_card/ProductCard";
 import PropTypes from "prop-types";
+import styles from "./Products.module.css"
 
 function Products({ productsData }) {
   return (
-    <div>
+    <div className={styles["products"]}>
       {productsData?.map((data) => (
         <ProductCard key={data.id} productData={data}></ProductCard>
       ))}

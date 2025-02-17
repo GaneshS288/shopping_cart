@@ -135,6 +135,8 @@ table {
 #root {
   min-height: 100dvh;
   font-family: "Inter", "Courier New", Courier, monospace;
+  display: flex;
+  flex-direction: column;
 }
 
 /*css variables */

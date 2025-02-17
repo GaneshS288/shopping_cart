@@ -57,9 +57,9 @@ describe("Product Card", () => {
     screen.debug()
    
 
-    const productImg = screen.getByRole("img");
+    const [ productImg ] = screen.getAllByRole("img");
     const productTitle = screen.getByRole("heading");
-    const [addToCartButton, viewDetailsButton] = screen.getAllByRole("button");
+    const [addToCartButton, decrementQty , incrementQty, viewDetailsButton] = screen.getAllByRole("button");
 
     expect(productImg).toBeInTheDocument();
     expect(productTitle.textContent).toBe(dummyProductData.title);

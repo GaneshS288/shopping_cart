@@ -45,7 +45,7 @@
   border-radius: 50px;
   color: var(--zinc-50);
   display: grid;
-  place-items: center;
+  place-content: center;
 }
 
 .user-container {
@@ -72,5 +72,11 @@
   }
   to {
     transform: scale(1.1, 1.1);
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .user-container {
+    flex-direction: column;
   }
 }
