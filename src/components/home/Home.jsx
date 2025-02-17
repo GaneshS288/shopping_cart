@@ -3,8 +3,9 @@ import HomeHeader from "./home_header/HomeHeader";
 import HomeNav from "./home_nav/HomeNav";
 import { useEffect, useState } from "react";
 import { fetchAllProducts, fetchCategory } from "../../lib/fetchCategory";
-import styles from "./Home.module.css"
+import styles from "./Home.module.css";
 import Products from "./products/Products";
+import LoadingWheel from "./loading_wheel/LoadingWheel";
 
 function Home() {
   const { username } = useOutletContext();
@@ -48,7 +49,11 @@ function Home() {
         ></HomeNav>
       </section>
       <main>
-        {isLoading || <Products productsData={categoriesData[category]}></Products>}
+        {isLoading ? (
+          <LoadingWheel></LoadingWheel>
+        ) : (
+          <Products productsData={categoriesData[category]}></Products>
+        )}
       </main>
     </>
   );
