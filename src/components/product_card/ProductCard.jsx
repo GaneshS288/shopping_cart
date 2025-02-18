@@ -2,8 +2,11 @@ import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 import styles from "./ProductCard.module.css";
 import starIcon from "../../assets/rating-star.svg";
+import { useState } from "react";
 
-function ProductCard({ productData }) {
+function ProductCard({ productData, handleAddToCart }) {
+  const [quantity, setQuantity] = useState(1);
+
   return (
     <div className={styles["productCard-container"]}>
       <div>
@@ -11,6 +14,7 @@ function ProductCard({ productData }) {
           src={productData.image}
           alt={productData.title}
           className={styles["product-img"]}
+          loading="lazy"
         />
       </div>
 
@@ -20,20 +24,21 @@ function ProductCard({ productData }) {
         <p>${productData.price}</p>
         <p>
           {productData.rating.rate}{" "}
-          <img src={starIcon} alt="star icon" className={styles["star-icon"]} />{" "}
+          <img src={starIcon} alt="star icon" className={styles["star-icon"]} />
           ({productData.rating.count} reviews)
         </p>
       </div>
 
       <div className={styles["addToCart-container"]}>
-        <button className={styles["addToCart-button"]}>Add to Cart</button>{" "}
+        <button onClick={() => handleAddToCart({...productData, quantity: quantity})} className={styles["addToCart-button"]}>Add to Cart</button>
         <div className={styles["quantity-container"]}>
           <button aria-label="decrement" className={styles["quantity-button"]}>
             -
-          </button>{" "}
+          </button>
           <input
             type="text"
-            value={1}
+            value={quantity}
+            onChange={(e) => setQuantity(Number(e.target.value))}
             name="quantity"
             aria-label="quantity"
             className={styles["quantity-input"]}
@@ -46,10 +51,17 @@ function ProductCard({ productData }) {
 
       <div className={styles["detailsAndRemoveButton-container"]}>
         <button className={styles["details-button"]}>
-          <NavLink to={`/home/products/${productData.id}`} className={styles["details-link"]}>View Details</NavLink>
+          <NavLink
+            to={`/home/products/${productData.id}`}
+            className={styles["details-link"]}
+          >
+            View Details
+          </NavLink>
         </button>
 
-        <button type="button" className={styles["remove-button"]}>Remove</button>
+        <button type="button" className={styles["remove-button"]}>
+          Remove
+        </button>
       </div>
     </div>
   );
@@ -57,6 +69,7 @@ function ProductCard({ productData }) {
 
 ProductCard.propTypes = {
   productData: PropTypes.object.isRequired,
+  handleAddToCart: PropTypes.func.isRequired,
 };
 
 export { ProductCard };

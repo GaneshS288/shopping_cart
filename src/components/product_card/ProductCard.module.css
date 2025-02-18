@@ -84,6 +84,10 @@
   border: 2px solid var(--neutral-950);
 }
 
+.details-button:hover {
+  box-shadow: 0 2px 2px gray;
+}
+
 .details-link {
   text-decoration: none;
   color: var(--neutral-950);
@@ -94,4 +98,9 @@
   flex: 1;
   background-color: var(--zinc-50);
   border: 2px solid var(--red-600);
+}
+
+
+.remove-button:hover {
+  box-shadow: 0 2px 2px grey;
 }

@@ -12,6 +12,22 @@ function Home() {
   const { category } = useParams();
   const [categoriesData, setCategoriesData] = useState({});
   const [isLoading, setLoading] = useState(true);
+  const [cart, setCart] = useState([]);
+
+  const cartItemCount = cart.reduce((accu, next) => {
+    return accu + next.quantity;
+  }, 0)
+
+  function addToCart(productData) {
+    let productInCart = cart.find((data) => (data.id === productData.id));
+    if (productInCart) {
+      let newCart = cart.filter((data) => data.id !== productInCart.id);
+      productData.quantity += productInCart.quantity;
+      setCart([...newCart, productData]);
+    } else {
+      setCart([...cart, productData]);
+    }
+  }
 
   async function populateCategoriesData(selectedCategory) {
     const dataPresent = Object.hasOwn(categoriesData, selectedCategory);
@@ -40,7 +56,7 @@ function Home() {
   return (
     <>
       <header>
-        <HomeHeader userName={username} cartItemCount={2}></HomeHeader>
+        <HomeHeader userName={username} cartItemCount={cartItemCount}></HomeHeader>
       </header>
       <section className={styles["category-nav-container"]}>
         <HomeNav
@@ -52,7 +68,10 @@ function Home() {
         {isLoading ? (
           <LoadingWheel></LoadingWheel>
         ) : (
-          <Products productsData={categoriesData[category]}></Products>
+          <Products
+            productsData={categoriesData[category]}
+            handleAddToCart={addToCart}
+          ></Products>
         )}
       </main>
     </>

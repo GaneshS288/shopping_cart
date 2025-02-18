@@ -3,6 +3,7 @@ import { render, screen, waitFor } from "@testing-library/react";
 import { createMemoryRouter, Outlet, RouterProvider } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
 import { fetchAllProducts, fetchCategory } from "../../lib/fetchCategory";
+import Products from "./products/Products";
 import Home from "./Home";
 
 const dummyProductData = [
@@ -46,6 +47,18 @@ vi.mock("../../lib/fetchCategory", () => {
     fetchCategory: vi.fn(),
   };
 });
+
+vi.mock("./products/Products.jsx", () => {
+  return {
+    default: ({productsData, handleAddToCart}) => {
+      return (
+        <>
+         {productsData.map((data) => <h4 key={data.id}>{data.title}</h4>)}
+        </>
+      ) 
+    }
+  }
+})
 
 fetchAllProducts.mockResolvedValue(dummyProductData);
 fetchCategory.mockResolvedValue(anotherDummyProductData);

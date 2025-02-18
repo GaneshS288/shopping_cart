@@ -9,6 +9,7 @@ exports[`Product Card > matches snapshot 1`] = `
       <img
         alt="Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops"
         class="_product-img_e211e9"
+        loading="lazy"
         src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
       />
     </div>
@@ -32,7 +33,6 @@ exports[`Product Card > matches snapshot 1`] = `
           class="_star-icon_e211e9"
           src="data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='utf-8'?%3e%3c!--%20Uploaded%20to:%20SVG%20Repo,%20www.svgrepo.com,%20Generator:%20SVG%20Repo%20Mixer%20Tools%20--%3e%3csvg%20width='800px'%20height='800px'%20viewBox='0%200%20128%20128'%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20aria-hidden='true'%20role='img'%20class='iconify%20iconify--noto'%20preserveAspectRatio='xMidYMid%20meet'%3e%3cpath%20d='M68.05%207.23l13.46%2030.7a7.047%207.047%200%200%200%205.82%204.19l32.79%202.94c3.71.54%205.19%205.09%202.5%207.71l-24.7%2020.75c-2%201.68-2.91%204.32-2.36%206.87l7.18%2033.61c.63%203.69-3.24%206.51-6.56%204.76L67.56%20102a7.033%207.033%200%200%200-7.12%200l-28.62%2016.75c-3.31%201.74-7.19-1.07-6.56-4.76l7.18-33.61c.54-2.55-.36-5.19-2.36-6.87L5.37%2052.78c-2.68-2.61-1.2-7.17%202.5-7.71l32.79-2.94a7.047%207.047%200%200%200%205.82-4.19l13.46-30.7c1.67-3.36%206.45-3.36%208.11-.01z'%20fill='%23fdd835'%3e%3c/path%3e%3cpath%20d='M67.07%2039.77l-2.28-22.62c-.09-1.26-.35-3.42%201.67-3.42c1.6%200%202.47%203.33%202.47%203.33l6.84%2018.16c2.58%206.91%201.52%209.28-.97%2010.68c-2.86%201.6-7.08.35-7.73-6.13z'%20fill='%23ffff8d'%3e%3c/path%3e%3cpath%20d='M95.28%2071.51L114.9%2056.2c.97-.81%202.72-2.1%201.32-3.57c-1.11-1.16-4.11.51-4.11.51l-17.17%206.71c-5.12%201.77-8.52%204.39-8.82%207.69c-.39%204.4%203.56%207.79%209.16%203.97z'%20fill='%23f4b400'%3e%3c/path%3e%3c/svg%3e"
         />
-         
         (
         120
          reviews)
@@ -46,7 +46,6 @@ exports[`Product Card > matches snapshot 1`] = `
       >
         Add to Cart
       </button>
-       
       <div
         class="_quantity-container_e211e9"
       >
@@ -56,7 +55,6 @@ exports[`Product Card > matches snapshot 1`] = `
         >
           -
         </button>
-         
         <input
           aria-label="quantity"
           class="_quantity-input_e211e9"
