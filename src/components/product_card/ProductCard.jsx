@@ -4,7 +4,7 @@ import styles from "./ProductCard.module.css";
 import starIcon from "../../assets/rating-star.svg";
 import { useState } from "react";
 
-function ProductCard({ productData, handleAddToCart }) {
+function ProductCard({ productData, handleAddToCart, handleRemoveFromCart }) {
   const [quantity, setQuantity] = useState(1);
 
   return (
@@ -59,7 +59,7 @@ function ProductCard({ productData, handleAddToCart }) {
           </NavLink>
         </button>
 
-        <button type="button" className={styles["remove-button"]}>
+        <button type="button" onClick={() => handleRemoveFromCart(productData)} className={styles["remove-button"]}>
           Remove
         </button>
       </div>
@@ -70,6 +70,7 @@ function ProductCard({ productData, handleAddToCart }) {
 ProductCard.propTypes = {
   productData: PropTypes.object.isRequired,
   handleAddToCart: PropTypes.func.isRequired,
+  handleRemoveFromCart: PropTypes.func.isRequired,
 };
 
 export { ProductCard };

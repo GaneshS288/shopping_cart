@@ -2,11 +2,11 @@ import { ProductCard } from "../../product_card/ProductCard";
 import PropTypes from "prop-types";
 import styles from "./Products.module.css"
 
-function Products({ productsData, handleAddToCart }) {
+function Products({ productsData, handleAddToCart, handleRemoveFromCart }) {
   return (
     <div className={styles["products"]}>
       {productsData?.map((data) => (
-        <ProductCard key={data.id} productData={data} handleAddToCart={handleAddToCart}></ProductCard>
+        <ProductCard key={data.id} productData={data} handleAddToCart={handleAddToCart} handleRemoveFromCart={handleRemoveFromCart}></ProductCard>
       ))}
     </div>
   );
@@ -15,6 +15,7 @@ function Products({ productsData, handleAddToCart }) {
 Products.propTypes = {
   productsData: PropTypes.array.isRequired,
   handleAddToCart: PropTypes.func.isRequired,
+  handleRemoveFromCart: PropTypes.func.isRequired,
 };
 
 export default Products;

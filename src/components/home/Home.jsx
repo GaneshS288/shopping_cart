@@ -29,6 +29,15 @@ function Home() {
     }
   }
 
+  function removeFromCart(productData) {
+    let productInCart = cart.find((data) => (data.id === productData.id));
+
+    if(productInCart) {
+      let newCart = cart.filter((data) => data.id !== productInCart.id);
+      setCart([...newCart]);
+    }
+  }
+
   async function populateCategoriesData(selectedCategory) {
     const dataPresent = Object.hasOwn(categoriesData, selectedCategory);
 
@@ -71,6 +80,7 @@ function Home() {
           <Products
             productsData={categoriesData[category]}
             handleAddToCart={addToCart}
+            handleRemoveFromCart={removeFromCart}
           ></Products>
         )}
       </main>

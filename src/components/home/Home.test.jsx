@@ -1,9 +1,10 @@
 import { describe, expect, it, vi } from "vitest";
-import { render, screen, waitFor } from "@testing-library/react";
+import { getByTestId, render, screen, waitFor } from "@testing-library/react";
 import { createMemoryRouter, Outlet, RouterProvider } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
 import { fetchAllProducts, fetchCategory } from "../../lib/fetchCategory";
 import Products from "./products/Products";
+import HomeHeader from "./home_header/HomeHeader";
 import Home from "./Home";
 
 const dummyProductData = [
@@ -48,17 +49,42 @@ vi.mock("../../lib/fetchCategory", () => {
   };
 });
 
-vi.mock("./products/Products.jsx", () => {
+vi.mock("./home_header/HomeHeader.jsx", () => {
   return {
-    default: ({productsData, handleAddToCart}) => {
+    default: ({ userName, cartItemCount }) => {
       return (
         <>
-         {productsData.map((data) => <h4 key={data.id}>{data.title}</h4>)}
+          <p>{userName}</p>
+          <span data-testid="cartItemCount">{cartItemCount}</span>
         </>
-      ) 
-    }
-  }
-})
+      );
+    },
+  };
+});
+
+vi.mock("./products/Products.jsx", () => {
+  return {
+    default: ({ productsData, handleAddToCart, handleRemoveFromCart }) => {
+      return (
+        <>
+          {productsData.map((data) => {
+            return (
+              <div key={data.id}>
+                <h4>{data.title}</h4>
+                <button
+                  onClick={() => handleAddToCart({ ...data, quantity: 1 })}
+                >
+                  Add to Cart
+                </button>
+                <button onClick={() => handleRemoveFromCart(data)}>Remove</button>
+              </div>
+            );
+          })}
+        </>
+      );
+    },
+  };
+});
 
 fetchAllProducts.mockResolvedValue(dummyProductData);
 fetchCategory.mockResolvedValue(anotherDummyProductData);
@@ -134,7 +160,39 @@ describe("Home page", () => {
         screen.getByText("dummy title for mocking purposes")
       ).toBeInTheDocument();
     });
+  });
 
-    screen.debug();
+  it("updates cart item counter when product is added to cart", async () => {
+    const { router, user } = testSetup();
+
+    render(<RouterProvider router={router}></RouterProvider>);
+    const cartItemCount = screen.getByTestId("cartItemCount");
+
+    await waitFor(async () => {
+      const [backPackAddToCartButton] = screen.getAllByText("Add to Cart");
+      await user.click(backPackAddToCartButton);
+      await user.click(backPackAddToCartButton);
+    });
+
+    expect(cartItemCount.textContent).toBe("2");
+  });
+
+  it("removes the items from cart when remove on a product card is clicked", async () => {
+    const { router, user } = testSetup();
+
+    render(<RouterProvider router={router}></RouterProvider>);
+    const cartItemCount = screen.getByTestId("cartItemCount");
+
+    await waitFor(async () => {
+      const [backPackAddToCartButton, HDAddButton] = screen.getAllByText("Add to Cart");
+      await user.click(backPackAddToCartButton);
+      await user.click(backPackAddToCartButton);
+      await user.click(HDAddButton);
+
+      const [backPackRemoveButton] = screen.getAllByText("Remove");
+      await user.click(backPackRemoveButton)
+    });
+
+    expect(cartItemCount.textContent).toBe("1");
   });
 });
