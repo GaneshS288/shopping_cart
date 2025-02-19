@@ -6,6 +6,7 @@ import { fetchAllProducts, fetchCategory } from "../../lib/fetchCategory";
 import styles from "./Home.module.css";
 import Products from "./products/Products";
 import LoadingWheel from "./loading_wheel/LoadingWheel";
+import Cart from "./cart/Cart";
 
 function Home() {
   const { username } = useOutletContext();
@@ -16,10 +17,10 @@ function Home() {
 
   const cartItemCount = cart.reduce((accu, next) => {
     return accu + next.quantity;
-  }, 0)
+  }, 0);
 
   function addToCart(productData) {
-    let productInCart = cart.find((data) => (data.id === productData.id));
+    let productInCart = cart.find((data) => data.id === productData.id);
     if (productInCart) {
       let newCart = cart.filter((data) => data.id !== productInCart.id);
       productData.quantity += productInCart.quantity;
@@ -30,9 +31,9 @@ function Home() {
   }
 
   function removeFromCart(productData) {
-    let productInCart = cart.find((data) => (data.id === productData.id));
+    let productInCart = cart.find((data) => data.id === productData.id);
 
-    if(productInCart) {
+    if (productInCart) {
       let newCart = cart.filter((data) => data.id !== productInCart.id);
       setCart([...newCart]);
     }
@@ -65,7 +66,10 @@ function Home() {
   return (
     <>
       <header>
-        <HomeHeader userName={username} cartItemCount={cartItemCount}></HomeHeader>
+        <HomeHeader
+          userName={username}
+          cartItemCount={cartItemCount}
+        ></HomeHeader>
       </header>
       <section className={styles["category-nav-container"]}>
         <HomeNav
@@ -74,8 +78,9 @@ function Home() {
         ></HomeNav>
       </section>
       <main>
-        {isLoading ? (
-          <LoadingWheel></LoadingWheel>
+        {isLoading ? <LoadingWheel></LoadingWheel> : null}
+        {category === "cart" ? (
+          <Cart cart={cart}></Cart>
         ) : (
           <Products
             productsData={categoriesData[category]}

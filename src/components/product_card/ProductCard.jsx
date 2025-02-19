@@ -18,6 +18,25 @@ function ProductCard({
     return productInCart ? productInCart.quantity : 0;
   }
 
+  function handleIncrementQuantity() {
+    setQuantity((state) => state + 1);
+  }
+
+  function handleDecremeantQuantity() {
+    if (quantity - 1 === 0) return;
+    else setQuantity(quantity - 1);
+  }
+
+  function handleEditQuantity(event) {
+    try {
+      const inputValue = Number.parseInt(event.target.value);
+      if (inputValue <= 0 || Number.isNaN(inputValue)) return;
+      else setQuantity(inputValue);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   return (
     <div className={styles["productCard-container"]}>
       <div>
@@ -50,18 +69,27 @@ function ProductCard({
           Add to Cart
         </button>
         <div className={styles["quantity-container"]}>
-          <button aria-label="decrement" className={styles["quantity-button"]}>
+          <button
+            aria-label="decrement"
+            onClick={handleDecremeantQuantity}
+            className={styles["quantity-button"]}
+          >
             -
           </button>
           <input
             type="text"
             value={quantity}
-            onChange={(e) => setQuantity(Number(e.target.value))}
+            disabled
+            onChange={(e) => handleEditQuantity(e)}
             name="quantity"
             aria-label="quantity"
             className={styles["quantity-input"]}
           />
-          <button aria-label="increment" className={styles["quantity-button"]}>
+          <button
+            aria-label="increment"
+            onClick={handleIncrementQuantity}
+            className={styles["quantity-button"]}
+          >
             +
           </button>
         </div>
@@ -87,7 +115,9 @@ function ProductCard({
       </div>
 
       {productCountInCart > 0 ? (
-        <p className={styles["product-count-in-cart"]}>({productCountInCart} in cart)</p>
+        <p className={styles["product-count-in-cart"]}>
+          ({productCountInCart} in cart)
+        </p>
       ) : null}
     </div>
   );
