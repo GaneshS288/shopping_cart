@@ -4,8 +4,19 @@ import styles from "./ProductCard.module.css";
 import starIcon from "../../assets/rating-star.svg";
 import { useState } from "react";
 
-function ProductCard({ productData, handleAddToCart, handleRemoveFromCart }) {
+function ProductCard({
+  productData,
+  handleAddToCart,
+  handleRemoveFromCart,
+  cart,
+}) {
   const [quantity, setQuantity] = useState(1);
+  const productCountInCart = getProductsInCartCount();
+
+  function getProductsInCartCount() {
+    const productInCart = cart.find((data) => data.id === productData.id);
+    return productInCart ? productInCart.quantity : 0;
+  }
 
   return (
     <div className={styles["productCard-container"]}>
@@ -30,7 +41,14 @@ function ProductCard({ productData, handleAddToCart, handleRemoveFromCart }) {
       </div>
 
       <div className={styles["addToCart-container"]}>
-        <button onClick={() => handleAddToCart({...productData, quantity: quantity})} className={styles["addToCart-button"]}>Add to Cart</button>
+        <button
+          onClick={() =>
+            handleAddToCart({ ...productData, quantity: quantity })
+          }
+          className={styles["addToCart-button"]}
+        >
+          Add to Cart
+        </button>
         <div className={styles["quantity-container"]}>
           <button aria-label="decrement" className={styles["quantity-button"]}>
             -
@@ -59,10 +77,18 @@ function ProductCard({ productData, handleAddToCart, handleRemoveFromCart }) {
           </NavLink>
         </button>
 
-        <button type="button" onClick={() => handleRemoveFromCart(productData)} className={styles["remove-button"]}>
+        <button
+          type="button"
+          onClick={() => handleRemoveFromCart(productData)}
+          className={styles["remove-button"]}
+        >
           Remove
         </button>
       </div>
+
+      {productCountInCart > 0 ? (
+        <p className={styles["product-count-in-cart"]}>({productCountInCart} in cart)</p>
+      ) : null}
     </div>
   );
 }
@@ -71,6 +97,7 @@ ProductCard.propTypes = {
   productData: PropTypes.object.isRequired,
   handleAddToCart: PropTypes.func.isRequired,
   handleRemoveFromCart: PropTypes.func.isRequired,
+  cart: PropTypes.array.isRequired,
 };
 
 export { ProductCard };

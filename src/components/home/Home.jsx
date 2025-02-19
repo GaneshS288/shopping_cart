@@ -81,6 +81,7 @@ function Home() {
             productsData={categoriesData[category]}
             handleAddToCart={addToCart}
             handleRemoveFromCart={removeFromCart}
+            cart={cart}
           ></Products>
         )}
       </main>
