@@ -39,6 +39,10 @@ function Home() {
     }
   }
 
+  function clearCart() {
+    setCart([]);
+  }
+
   async function populateCategoriesData(selectedCategory) {
     const dataPresent = Object.hasOwn(categoriesData, selectedCategory);
 
@@ -80,7 +84,11 @@ function Home() {
       <main>
         {isLoading ? <LoadingWheel></LoadingWheel> : null}
         {category === "cart" ? (
-          <Cart cart={cart}></Cart>
+          <Cart
+            cart={cart}
+            handleRemoveFromCart={removeFromCart}
+            handleClearCart={clearCart}
+          ></Cart>
         ) : (
           <Products
             productsData={categoriesData[category]}
