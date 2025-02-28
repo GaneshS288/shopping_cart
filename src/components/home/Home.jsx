@@ -111,7 +111,7 @@ function Home() {
         {productId !== undefined ? (
           <ProductPage
             productData={categoriesData.products.find(
-              (data) => (data.id = productId)
+              (data) => (data.id === Number(productId))
             )}
             handleAddToCart={addToCart}
             handleRemoveFromCart={removeFromCart}

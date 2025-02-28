@@ -1,12 +1,13 @@
 import App from "./App";
+import ErrorPage from "./components/errorPage/ErrorPage";
 import Home from "./components/home/Home";
-import ProductPage from "./components/home/product_page/ProductPage";
 import Login from "./components/login/Login";
 
 const routes = [
   {
     path: "/",
     element: <App></App>,
+    errorElement: <ErrorPage></ErrorPage> ,
     children: [
       {
         path: "/login",

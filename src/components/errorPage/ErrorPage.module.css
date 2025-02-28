@@ -1,0 +1,14 @@
+.errorPage {
+    display: grid;
+    place-items: center;
+    padding: 3rem;
+}
+
+.errorPage > h1 {
+    font: 600 2rem Inter;
+}
+
+.errorPage > a {
+    padding-top: 2rem;
+    font: 1.2rem Inter;
+}
