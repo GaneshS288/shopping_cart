@@ -3,8 +3,6 @@ import { getByTestId, render, screen, waitFor } from "@testing-library/react";
 import { createMemoryRouter, Outlet, RouterProvider } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
 import { fetchAllProducts, fetchCategory } from "../../lib/fetchCategory";
-import Products from "./products/Products";
-import HomeHeader from "./home_header/HomeHeader";
 import Home from "./Home";
 
 const dummyProductData = [

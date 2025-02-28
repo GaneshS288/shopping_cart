@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { ProductCard } from "./ProductCard.jsx";
 import { createMemoryRouter, RouterProvider } from "react-router-dom";
@@ -21,11 +21,15 @@ function DummyComponent() {
   );
 }
 
+const addToCart = vi.fn();
+const removeFromCart = vi.fn();
+const cart = [];
+
 function testSetup() {
   const routes = [
     {
       path : "/home/products",
-      element: <ProductCard productData={dummyProductData}></ProductCard>,
+      element: <ProductCard productData={dummyProductData} handleAddToCart={addToCart} handleRemoveFromCart={removeFromCart} cart={[]}></ProductCard>,
     },
     {
       path: "/home/products/:id",

@@ -53,7 +53,7 @@ function ProductCard({
       <div className={styles["priceAndRating-container"]}>
         <p>${productData.price}</p>
         <p>
-          {productData.rating.rate}{" "}
+          {productData.rating.rate}
           <img src={starIcon} alt="star icon" className={styles["star-icon"]} />
           ({productData.rating.count} reviews)
         </p>

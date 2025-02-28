@@ -7,10 +7,11 @@ import styles from "./Home.module.css";
 import Products from "./products/Products";
 import LoadingWheel from "./loading_wheel/LoadingWheel";
 import Cart from "./cart/Cart";
+import ProductPage from "./product_page/ProductPage";
 
 function Home() {
   const { username } = useOutletContext();
-  const { category } = useParams();
+  const { category, productId } = useParams();
   const [categoriesData, setCategoriesData] = useState({});
   const [isLoading, setLoading] = useState(true);
   const [cart, setCart] = useState([]);
@@ -75,13 +76,21 @@ function Home() {
         ></HomeHeader>
       </header>
       <section className={styles["category-nav-container"]}>
-        <HomeNav
-          handleClick={populateCategoriesData}
-          selectedCategory={category}
-        ></HomeNav>
+        {category !== undefined ? (
+          <HomeNav
+            handleClick={populateCategoriesData}
+            selectedCategory={category}
+          ></HomeNav>
+        ) : (
+          <HomeNav
+            handleClick={populateCategoriesData}
+            selectedCategory={"products"}
+          ></HomeNav>
+        )}
       </section>
       <main>
         {isLoading ? <LoadingWheel></LoadingWheel> : null}
+
         {category === "cart" && !isLoading ? (
           <Cart
             cart={cart}
@@ -89,13 +98,25 @@ function Home() {
             handleClearCart={clearCart}
           ></Cart>
         ) : null}
-        {category !== "cart" && !isLoading ? (
+
+        {category !== "cart" && category !== undefined && !isLoading ? (
           <Products
             productsData={categoriesData[category]}
             handleAddToCart={addToCart}
             handleRemoveFromCart={removeFromCart}
             cart={cart}
           ></Products>
+        ) : null}
+
+        {productId !== undefined ? (
+          <ProductPage
+            productData={categoriesData.products.find(
+              (data) => (data.id = productId)
+            )}
+            handleAddToCart={addToCart}
+            handleRemoveFromCart={removeFromCart}
+            cart={cart}
+          ></ProductPage>
         ) : null}
       </main>
     </>

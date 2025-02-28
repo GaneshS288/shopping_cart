@@ -27,7 +27,6 @@ exports[`Product Card > matches snapshot 1`] = `
       </p>
       <p>
         3.9
-         
         <img
           alt="star icon"
           class="_star-icon_e211e9"
@@ -58,6 +57,7 @@ exports[`Product Card > matches snapshot 1`] = `
         <input
           aria-label="quantity"
           class="_quantity-input_e211e9"
+          disabled=""
           name="quantity"
           type="text"
           value="1"
