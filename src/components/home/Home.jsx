@@ -66,7 +66,6 @@ function Home() {
     fetchdata();
   }, []);
 
-  console.log(category);
   return (
     <>
       <header>
@@ -83,20 +82,21 @@ function Home() {
       </section>
       <main>
         {isLoading ? <LoadingWheel></LoadingWheel> : null}
-        {category === "cart" ? (
+        {category === "cart" && !isLoading ? (
           <Cart
             cart={cart}
             handleRemoveFromCart={removeFromCart}
             handleClearCart={clearCart}
           ></Cart>
-        ) : (
+        ) : null}
+        {category !== "cart" && !isLoading ? (
           <Products
             productsData={categoriesData[category]}
             handleAddToCart={addToCart}
             handleRemoveFromCart={removeFromCart}
             cart={cart}
           ></Products>
-        )}
+        ) : null}
       </main>
     </>
   );

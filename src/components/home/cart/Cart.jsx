@@ -10,11 +10,25 @@ function Cart({ cart, handleClearCart, handleRemoveFromCart }) {
   return (
     <div>
       <div className={styles["cartMain"]}>
-          <p className={styles.total}>Total : ${totalPrice}</p>
-          <div className={styles["button-container"]}>
-            <button className={styles["checkout-button"]}>Checkout</button>
-            <button className={styles["clear-button"]} onClick={() => handleClearCart()}>Clear Cart</button>
-          </div>
+        <p className={styles.total}>Total : ${totalPrice}</p>
+        <div className={styles["button-container"]}>
+          <button
+            className={styles["checkout-button"]}
+            onClick={() =>
+              alert(
+                "This is frontend only so this functionality hasn't been implemented"
+              )
+            }
+          >
+            Checkout
+          </button>
+          <button
+            className={styles["clear-button"]}
+            onClick={() => handleClearCart()}
+          >
+            Clear Cart
+          </button>
+        </div>
       </div>
 
       <div className={styles["cartProducts"]}>

@@ -5,9 +5,6 @@
     grid-template-columns: minmax(300px, 400px);
     row-gap: 2rem;
     padding: 2rem;
-    background-image: url(../../assets/shopping_cart.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 
 .login-container > div {
@@ -18,9 +15,9 @@
     grid-template-columns: 1fr;
     gap: 1rem;
     border: 3px solid var(--neutral-950);
-    background-color: var(--fuschia-200);
+    background-color: var(--zinc-50);
     color: var(--neutral-950);
-    border-radius: 10px;
+    box-shadow: 2px 2px var(--neutral-950);
 }
 
 .title {
