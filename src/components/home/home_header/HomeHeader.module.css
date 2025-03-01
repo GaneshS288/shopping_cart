@@ -80,4 +80,14 @@
   .user-container {
     flex-direction: column;
   }
+
+  .header-container {
+    padding: 1rem 1rem;
+  }
+
+  .header-container__right {
+    gap: 1rem;
+  }
+  
 }
+

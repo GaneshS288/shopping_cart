@@ -40,8 +40,14 @@
 
 .cartProducts {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 350px));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 300px));
     column-gap: 3rem;
     row-gap: 3rem;
     justify-content: center;
+}
+
+@media screen and (max-width: 500px) {
+    .cartMain {
+        flex-direction: column;
+    }
 }
