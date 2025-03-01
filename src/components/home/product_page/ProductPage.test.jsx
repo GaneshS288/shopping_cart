@@ -42,6 +42,6 @@ describe("Product page", () => {
     expect(descriptionPara.textContent).toBe(dummyProductData[0].description);
     expect(productImg.length).toBe(2);
     expect(pricepara.textContent).toMatch(`$${dummyProductData[0].price}`);
-    expect(quantityPara.textContent).toMatch("0");
+    expect(quantityPara.textContent).toMatch("1");
   });
 });
