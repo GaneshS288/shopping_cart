@@ -2,7 +2,6 @@
     display: grid;
     place-content: center;
     min-height: 100vh;
-    grid-template-columns: minmax(300px, 400px);
     row-gap: 2rem;
     padding: 2rem;
 }
@@ -47,7 +46,7 @@
 }
 
 .login-container button {
-    padding: 1rem 2rem;
+    padding: 0.5rem 1rem;
     font-size: 1.4rem;
     font-family: Inter, 'Courier New', Courier, monospace;
     font-weight: 500;
@@ -63,6 +62,15 @@
 
 .login-container button:active {
     box-shadow: inset 2px 2px 2px grey;
+}
+
+@media screen and (max-width: 400px) {
+    .login-container {
+        padding: 10px;
+    }
+    .login-container > div {
+        min-width: 250px;
+    }
 }
 
 /*Photo by Nataliya Vaitkevich: https://www.pexels.com/photo/black-smartphone-on-miniature-shopping-cart-6214388/*/
